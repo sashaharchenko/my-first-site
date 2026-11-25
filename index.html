@@ -10,7 +10,33 @@
     <h1>Привет! Меня зовут Саша!</h1>
     <p>Это мой первый сайт на GitHub.</p>
 
+    <p id="firebase-status">Подключаем Firebase...</p>
+
     <button onclick="hello()">Нажми меня</button>
+
+    <script type="module">
+        import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "ТВОЙ_API_KEY",
+            authDomain: "my-first-site-9716a.firebaseapp.com",
+            projectId: "my-first-site-9716a",
+            storageBucket: "my-first-site-9716a.firebasestorage.app",
+            messagingSenderId: "762280447213",
+            appId: "1:762280447213:web:0ae325a3591c3ccc08d0e4"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            document.getElementById("firebase-status").textContent =
+                "Firebase успешно подключен!";
+        } catch (error) {
+            document.getElementById("firebase-status").textContent =
+                "Ошибка подключения Firebase";
+            console.error(error);
+        }
+    </script>
 
     <script>
         function hello() {
